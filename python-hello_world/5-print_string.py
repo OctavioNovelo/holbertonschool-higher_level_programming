@@ -2,5 +2,5 @@
 
 str = "Holberton School"
 print(3 * str)
-print(\n)
+print("\n")
 print(str[0:10]\n)
