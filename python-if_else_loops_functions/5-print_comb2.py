@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 for i in range(00, 100):
     if i < 10:
-        print('0', end="")
+        print("{}".format('0'), end="")
 
-    print(i, end=",")
+    print("{}".format(i), end=",")
