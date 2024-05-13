@@ -2,6 +2,6 @@
 def islower(c):
     letter = ord(c)
     if letter >= 97 and letter <= 122:
-        return true
+        return 1
     else:
-        return false
+        return 0
