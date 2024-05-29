@@ -8,7 +8,6 @@ class Square:
     Attributes:
         __size (int): The size of the square (private).
     """
-
     
     def __init__(self, size=0):
          """Initialize a new Square.
@@ -18,15 +17,12 @@ class Square:
 
         Raises:
             TypeError: If size is not an integer.
+            TypeValue: Size must be >= 0.
         """
          
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
-        
-        self.__size = size
+        if size < 0:
+            raise TypeValue("size must be >= 0")
 
-        try:
-            integer = Square()
-        except TypeError as e:
-            print(e)
-            
+        self.__size = size
