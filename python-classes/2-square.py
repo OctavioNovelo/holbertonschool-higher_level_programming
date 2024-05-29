@@ -19,6 +19,7 @@ class Square:
         Raises:
             TypeError: If size is not an integer.
         """
+         
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
         
