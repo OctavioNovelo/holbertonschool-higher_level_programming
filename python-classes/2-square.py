@@ -1,20 +1,20 @@
 #!/usr/bin/python3
-"""This module defines a class Square that represents a square."""
+"""Define a class Square."""
 
 
 class Square:
     """Represent a square.
-    
-    Attributes:
-        __size (int): The size of the square (private).
-    """
 
+    Attributes:
+        __size (int): The size of the square.
+    """
+    
     def __init__(self, size=0):
-        """Initialize a new square.
-        
+     """Initialize a new Square.
+
         Args:
-            size (int): The size of the square. It must be a non-negative integer (default is 0).
-        
+            size (int): The size of the new square. It must be a non-negative integer.
+
         Raises:
             TypeError: If size is not an integer.
             ValueError: If size is less than 0.
