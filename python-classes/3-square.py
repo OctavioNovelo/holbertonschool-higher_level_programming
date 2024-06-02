@@ -3,7 +3,7 @@
 
 
 class Square:
-    """represent a square.
+    """Represent a square.
     """
     def __init__(self, size=0):
         if not isinstance(size, int):
@@ -14,5 +14,5 @@ class Square:
 
 
     def area(self):
-        """area of square."""
+        """area of square"""
         return self.__size ** 2
