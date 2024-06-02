@@ -1,23 +1,16 @@
 #!/usr/bin/python3
-"""Define a class Square."""
+"""Define a class Square with private instance attribute size."""
 
 
 class Square:
     """Represent a square."""
-
     def __init__(self, size=0, position=(0, 0)):
-        """Initialize a new square.
-
-        Args:
-            size (int): The size of the new square.
-            position (int, int): The position of the new square.
-        """
         self.size = size
         self.position = position
 
     @property
     def size(self):
-        """Get/set the current size of the square."""
+        """Get the size of the square."""
         return (self.__size)
 
     @size.setter
@@ -35,6 +28,7 @@ class Square:
 
     @position.setter
     def position(self, value):
+        """Set size of Square."""
         if (not isinstance(value, tuple) or
                 len(value) != 2 or
                 not all(isinstance(num, int) for num in value) or
@@ -43,11 +37,11 @@ class Square:
         self.__position = value
 
     def area(self):
-        """Return the current area of the square."""
+        """Return the area of square."""
         return (self.__size * self.__size)
 
     def my_print(self):
-        """Print the square with the # character."""
+        """Print the square."""
         if self.__size == 0:
             print("")
             return
