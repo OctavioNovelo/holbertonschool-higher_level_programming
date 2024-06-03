@@ -1,4 +1,4 @@
-#!/usr/bin/python3                                                                                                                                                                                 
+#!/usr/bin/python3
 """Rectangle."""
 
 
@@ -41,7 +41,7 @@ class Rectangle:
         return self.__width * self.__height
 
     def perimeter(self):
-        """Retur the rectangle perimeter."""
+        """Return the rectangle perimeter."""
         if self.__height == 0 or self.__width == 0:
             self.__perimeter = 0
             return self.__perimeter
