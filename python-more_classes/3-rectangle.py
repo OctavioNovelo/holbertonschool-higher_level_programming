@@ -49,11 +49,9 @@ class Rectangle:
             self.__perimeter = (self.__width * 2) + (self.__height * 2)
         return self.__perimeter
 
-    def print():
+    def __str__(self):
         """Print rectangle."""
-        if self.__height == 0 or self.__width == 0:
-            print("")
-            return
-        for i in range(self.__height):
-            for i in range(self.__width):
-                print("#")
+        if self.__width == 0 or self.__height == 0:
+            return ""
+        rectangle = "\n".join(["#" * self.__width for _ in range(self.__height)])
+        return rectangle
