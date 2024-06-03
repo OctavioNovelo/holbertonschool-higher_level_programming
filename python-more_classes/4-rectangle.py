@@ -41,10 +41,28 @@ class Rectangle:
         return self.__width * self.__height
 
     def perimeter(self):
-        """Retur the rectangle perimeter."""
+        """Return the rectangle perimeter."""
         if self.__height == 0 or self.__width == 0:
             self.__perimeter = 0
             return self.__perimeter
         else:
             self.__perimeter = (self.__width * 2) + (self.__height * 2)
         return self.__perimeter
+
+    def __str__(self):
+        """Print rectangle."""
+        if self.__width == 0 or self.__height == 0:
+            return ("")
+
+        rect = []
+        for i in range(self.__height):
+            [rect.append('#') for j in range(self.__width)]
+            if i != self.__height - 1:
+                rect.append("\n")
+        return ("".join(rect))
+
+    def __repr__(self):
+        """Return the string representation of the Rectangle."""
+        rect = "Rectangle(" + str(self.__width)
+        rect += ", " + str(self.__height) + ")"
+        return (rect)
