@@ -1,32 +1,20 @@
 #!/usr/bin/python3
 """
-Module: model_city.py
-Author: TheWatcher01
-Date: 21/03/2024
-Description:
-Python file that contains the class definition of a City.
+create table city
 """
-
 from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
+from sqlalchemy.orm import relationship
+from model_state import Base
 
 
 class City(Base):
-    """
-    Represents a city for a MySQL database.
-
-    Attributes:
-        id (int): an auto-generated, unique integer
-                  representing the city's ID.
-        name (str): a string with a maximum of
-                    128 characters representing the city's name.
-        state_id (int): an integer representing the state's ID
-                        that the city belongs to.
-    """
+    """table declaration"""
     __tablename__ = 'cities'
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey(
-        'states.id', ondelete="CASCADE"), nullable=False)
+    id = Column(Integer,
+                primary_key=True,
+                autoincrement=True,
+                nullable=False)
+    name = Column(String(128))
+    state_id = Column(Integer,
+                      ForeignKey('states.id'))
+    state = relationship('State')
