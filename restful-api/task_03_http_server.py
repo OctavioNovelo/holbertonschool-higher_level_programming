@@ -6,6 +6,7 @@ import json
 class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         parsed_path = self.path
+        print(f"Received GET request for: {parsed_path}")
         if parsed_path == "/":
             self.send_response(200)
             self.send_header('Content-type', 'text/plain')
