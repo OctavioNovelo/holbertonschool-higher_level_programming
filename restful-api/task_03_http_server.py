@@ -38,7 +38,7 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             }
             self.wfile.write(json.dumps(response).encode())
 
-def run(server_class=http.server.HTTPServer, handler_class=SimpleHTTPRequestHandler, port=8000):
+def run(server_class=http.server.HTTPServer, handler_class=SimpleHTTPRequestHandler, port=8080):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     print(f'Starting httpd server on port {port}...')
