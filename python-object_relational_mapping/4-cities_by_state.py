@@ -1,29 +1,17 @@
 #!/usr/bin/python3
-"""
-display the cities and state
-"""
-import MySQLdb
+# Lists all cities of the database hbtn_0e_4_usa, ordered by city id.
+# Usage: ./4-cities_by_state.py <mysql username> \
+#                               <mysql password> \
+#                               <database name>
 import sys
+import MySQLdb
 
 if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-
-    conn = MySQLdb.connect(
-        host="localhost",
-        port=3306, user=username,
-        passwd=password, db=database,
-        charset="utf8")
-
-    cur = conn.cursor()
-    cur.execute("SELECT c.id, c.name, st.name \
-                FROM cities AS c \
-                JOIN states AS st \
-                    ON c.state_id = st.id \
-                ORDER BY id")
-    querty_rows = cur.fetchall()
-    for row in querty_rows:
-        print(row)
-    cur.close()
-    conn.close()
+    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
+    c = db.cursor()
+    c.execute("SELECT `c`.`id`, `c`.`name`, `s`.`name` \
+                 FROM `cities` as `c` \
+                INNER JOIN `states` as `s` \
+                   ON `c`.`state_id` = `s`.`id` \
+                ORDER BY `c`.`id`")
+    [print(city) for city in c.fetchall()]

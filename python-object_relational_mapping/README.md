@@ -1,1 +1,1 @@
-# more sql and python relational
+Python - Object-relational mapping
