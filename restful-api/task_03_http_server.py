@@ -1,16 +1,15 @@
 import http.server
 import json
-from urllib.parse import urlparse, parse_qs
 
 class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
-        parsed_path = urlparse(self.path)
-        if parsed_path.path == "/":
+        parsed_path = self.path
+        if parsed_path == "/":
             self.send_response(200)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
             self.wfile.write(b"Hello, this is a simple API!")
-        elif parsed_path.path == "/data":
+        elif parsed_path == "/data":
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
@@ -20,7 +19,7 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
                 "city": "New York"
             }
             self.wfile.write(json.dumps(response).encode())
-        elif parsed_path.path == "/status":
+        elif parsed_path == "/status":
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
@@ -29,7 +28,13 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             }
             self.wfile.write(json.dumps(response).encode())
         else:
-            self.send_error(404, "Endpoint not found")
+            self.send_response(404)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            response = {
+                "error": "Endpoint not found"
+            }
+            self.wfile.write(json.dumps(response).encode())
 
 def run(server_class=http.server.HTTPServer, handler_class=SimpleHTTPRequestHandler, port=8000):
     server_address = ('', port)
